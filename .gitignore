@@ -9,6 +9,8 @@ __pycache__/
 
 docs/.vitepress/cache/
 docs/.vitepress/dist/
+dist/
+*.zip
 
 # Keep implementation plans local; publish only product code and content.
 docs/plans/

@@ -3,12 +3,12 @@ import { resolve } from "node:path";
 
 import type { HeadConfig, PageData, TransformContext } from "vitepress";
 
-const SITE_NAME = "WorkBuddy 实战蓝皮书";
-const SITE_ALTERNATE_NAME = "WorkBuddy Guide";
-const ORGANIZATION_NAME = "WorkBuddy Guide Contributors";
-const GITHUB_URL = "https://github.com/AlephAITech/WorkBuddyGuide";
+const SITE_NAME = "重庆璀泊科技 · WorkBuddy 实战蓝皮书";
+const SITE_ALTERNATE_NAME = "Cuibo WorkBuddy Guide";
+const ORGANIZATION_NAME = "重庆璀泊科技有限公司";
+const GITHUB_URL = "";
 const DEFAULT_DESCRIPTION =
-  "从安装使用到 AI 工作系统：28 章 WorkBuddy 实战指南与团队落地方法。";
+  "重庆璀泊科技有限公司企业级 AI Agent 实战指南：从岗位入门到智能工作系统。";
 
 function cleanPagePath(page: string): string {
   if (page === "index.md") return "/";
@@ -134,11 +134,9 @@ function breadcrumbName(segment: string): string {
   }
 
   const labels: Record<string, string> = {
-    bluebook: "WorkBuddy 实战蓝皮书",
-    cases: "社区案例集",
-    community: "社区共创",
-    help: "帮你解决",
-    "reading-guide": "WorkBuddy 学习指南",
+    bluebook: "蓝皮书目录",
+    "reading-guide": "学习指南",
+    about: "关于璀泊科技",
   };
 
   return labels[decodedSegment] || decodedSegment.replace(/[-_]/g, " ");

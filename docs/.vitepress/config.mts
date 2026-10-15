@@ -4,103 +4,86 @@ import { siteSidebar } from "./sidebar";
 import { configureMermaidMarkdown } from "./mermaid-markdown";
 import { createPageDescription, createSeoHead } from "./seo";
 
-const siteUrl = process.env.VITEPRESS_SITE_URL || "https://workbuddy.homes";
+const siteUrl = process.env.VITEPRESS_SITE_URL || "https://workbuddy.cuibo.com";
 
 export default defineConfig({
-    lang: "zh-CN",
-    title: "WorkBuddy 实战蓝皮书",
-    titleTemplate: ":title · WorkBuddy 实战蓝皮书",
-    description: "从安装使用到 AI 工作系统：28 章 WorkBuddy 实战指南与团队落地方法。",
-    cleanUrls: true,
-    lastUpdated: true,
-    srcExclude: ["**/source.md", "plans/**"],
-    sitemap: {
-      hostname: siteUrl,
-    },
-    transformPageData: (pageData, { siteConfig }) => {
-      if (pageData.relativePath.startsWith("cases/")) {
-        pageData.frontmatter.aside = false;
-        pageData.frontmatter.outline = false;
-      }
-
-      return {
-        description: createPageDescription(siteConfig.srcDir, pageData),
-      };
-    },
-    transformHead: (context) => createSeoHead(siteUrl, context),
-    head: [
-      ["link", { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
-      ["meta", { name: "theme-color", content: "#d8f238" }],
-      ["meta", { name: "author", content: "WorkBuddy Guide Contributors" }],
-      [
-        "meta",
-        {
-          name: "baidu-site-verification",
-          content: "codeva-RF1ZqL4g90",
-        },
-      ],
-      [
-        "meta",
-        {
-          name: "keywords",
-          content:
-            "WorkBuddy,WorkBuddy 教程,AI Agent,AI 工作系统,Skills,MCP,自动化,多智能体,职场 AI",
-        },
-      ],
+  lang: "zh-CN",
+  title: "重庆璀泊科技 · WorkBuddy 实战蓝皮书",
+  titleTemplate: ":title · 重庆璀泊科技",
+  description: "重庆璀泊科技有限公司企业级 AI Agent 实战指南：从岗位入门到智能工作系统。",
+  outDir: "../dist",
+  cleanUrls: true,
+  lastUpdated: true,
+  srcExclude: ["**/source.md"],
+  sitemap: {
+    hostname: siteUrl,
+  },
+  transformPageData: (pageData, { siteConfig }) => {
+    return {
+      description: createPageDescription(siteConfig.srcDir, pageData),
+    };
+  },
+  transformHead: (context) => createSeoHead(siteUrl, context),
+  head: [
+    ["link", { rel: "icon", type: "image/jpeg", href: "/logo.jpg" }],
+    ["meta", { name: "theme-color", content: "#0284c7" }],
+    ["meta", { name: "author", content: "重庆璀泊科技有限公司" }],
+    [
+      "meta",
+      {
+        name: "keywords",
+        content: "重庆璀泊科技有限公司,WorkBuddy,AI Agent,AI工作系统,企业实战,技能培训,智能体",
+      },
     ],
-    markdown: {
-      config: configureMermaidMarkdown,
-      image: {
-        lazyLoading: true,
-      },
-      theme: {
-        light: "github-light",
-        dark: "github-dark",
+  ],
+  markdown: {
+    config: configureMermaidMarkdown,
+    image: {
+      lazyLoading: true,
+    },
+    theme: {
+      light: "github-light",
+      dark: "github-dark",
+    },
+  },
+  vite: {
+    build: {
+      chunkSizeWarningLimit: 2500,
+    },
+  },
+  themeConfig: {
+    siteTitle: "璀泊科技 · WorkBuddy 蓝皮书",
+    logo: "/logo.jpg",
+    nav: [
+      { text: "首页", link: "/" },
+      { text: "学习路线", link: "/reading-guide" },
+      { text: "蓝皮书教程", link: "/bluebook/" },
+      { text: "场景速查与模板", link: "/bluebook/附录/" },
+      { text: "关于璀泊科技", link: "/about" },
+    ],
+    sidebar: siteSidebar,
+    search: {
+      provider: "local",
+    },
+    outline: {
+      level: [2, 3],
+      label: "本页目录",
+    },
+    docFooter: {
+      prev: "上一篇",
+      next: "下一篇",
+    },
+    lastUpdated: {
+      text: "最后更新",
+      formatOptions: {
+        dateStyle: "medium",
+        timeStyle: "short",
       },
     },
-    themeConfig: {
-      siteTitle: "WorkBuddy Guide",
-      nav: [
-        { text: "首页", link: "/" },
-        { text: "开始阅读", link: "/bluebook/" },
-        { text: "案例集", link: "/cases/" },
-        { text: "帮你解决", link: "/help/" },
-        { text: "阅读指南", link: "/reading-guide" },
-        {
-          text: "交流群",
-          items: [{ component: "GroupQrMenu" }],
-        },
-      ],
-      sidebar: siteSidebar,
-      socialLinks: [
-        { icon: "github", link: "https://github.com/AlephAITech/WorkBuddyGuide" },
-      ],
-      search: {
-        provider: "local",
-      },
-      outline: {
-        level: [2, 3],
-        label: "本页目录",
-      },
-      docFooter: {
-        prev: "上一篇",
-        next: "下一篇",
-      },
-      lastUpdated: {
-        text: "最后更新",
-        formatOptions: {
-          dateStyle: "medium",
-          timeStyle: "short",
-        },
-      },
-      editLink: {
-        pattern: "https://github.com/AlephAITech/WorkBuddyGuide/edit/main/docs/:path",
-        text: "在 GitHub 上改进此页",
-      },
-      footer: {
-        message:
-          '以真实任务为主线的 WorkBuddy 社区实战读本 · Pixel icons by <a href="https://pixeliconlibrary.com/" target="_blank" rel="noreferrer">HackerNoon</a>',
-        copyright: "Copyright © 2026 WorkBuddy Guide Contributors",
-      },
+    footer: {
+      message:
+        '<div class="cb-footer-links"><span class="cb-footer-links-title">璀泊生态矩阵：</span><a href="https://www.cuibokeji.com" target="_blank" rel="noopener noreferrer">璀泊官网</a><span class="cb-footer-sep">·</span><a href="https://geo.cuibokeji.com" target="_blank" rel="noopener noreferrer">璀泊智搜</a><span class="cb-footer-sep">·</span><a href="https://miit.cuibokeji.com" target="_blank" rel="noopener noreferrer">璀泊人工智能证书</a><span class="cb-footer-sep">·</span><a href="https://www.edu.cuibokeji.com" target="_blank" rel="noopener noreferrer">璀泊Ai科学社</a></div><div class="cb-footer-tagline">重庆璀泊科技有限公司 · 企业级 AI 实践与技能赋能平台</div>',
+      copyright: "Copyright © 2026 重庆璀泊科技有限公司 All Rights Reserved",
     },
-  });
+  },
+});

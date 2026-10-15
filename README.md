@@ -1,139 +1,132 @@
 <p align="center">
-  <a href="https://workbuddy.homes/">
-    <img src="./assets/workbuddy-guide-banner.png" alt="WorkBuddy蓝皮书：首页预览" width="100%">
-  </a>
+  <img src="./assets/logo.jpg" alt="重庆璀泊科技有限公司" width="160">
 </p>
 
-<h1 align="center">WorkBuddy 实战蓝皮书</h1>
+<h1 align="center">重庆璀泊科技 · WorkBuddy 实战蓝皮书</h1>
 
-<p align="center"><strong>从第一项任务，到一支 AI 团队</strong></p>
+<p align="center"><strong>企业级 AI Agent 实战指南：从单项任务提效，到构建部门智能工作系统</strong></p>
 
 <p align="center">
-  简体中文 · <a href="./README_en.md">English</a> ·
-  <a href="https://workbuddy.homes/">在线阅读</a> ·
-  <a href="https://workbuddy.homes/cases/">社区案例集</a> ·
-  <a href="https://workbuddy.homes/help/">帮你解决</a> ·
-  <a href="./docs/reading-guide.md">阅读指南</a> ·
-  <a href="./CONTRIBUTING.md">参与共创</a>
+  <a href="./docs/reading-guide.md">学习路线规划</a> ·
+  <a href="./docs/bluebook/index.md">蓝皮书教程全集</a> ·
+  <a href="./docs/bluebook/附录/index.md">常用模板与速查</a> ·
+  <a href="./docs/about.md">关于璀泊科技</a>
 </p>
 
-> 这不是官方功能说明书的改写，而是一本以真实任务为主线的实战读本。先完成安装和第一项工作，再进入移动办公、知识管理、专业诊断、内容自动化和多 Agent 团队，最后把一次成功变成团队可复用的工作系统。
+> 本套《WorkBuddy 实战蓝皮书》是重庆璀泊科技有限公司针对企业级 AI Agent（智能体）与自动化工作系统实践沉淀的核心知识资产。公司内部用于员工技能实训与生产力跃迁；对外可作为智能化协作的样板成果，展示并赋能合作企业。
 
-## 在线阅读
+---
 
-推荐访问 **[workbuddy.homes](https://workbuddy.homes/)** 阅读。网站提供完整侧边栏、全文搜索、章节目录、深色模式、流程图和移动端适配。
+## 蓝皮书知识体系
 
-GitHub 适合了解项目和参与贡献；真正阅读蓝皮书时，网站体验更完整。
+全书共 28 章及附录，覆盖从软件入门到部门级多智能体协同的全生命周期：
 
-## 你会在这里看到什么
+| 模块 | 核心内容 | 学习目标 |
+| :--- | :--- | :--- |
+| **第一篇 · 使用手册** | 客户端下载安装、界面与工作区、首个任务、Skill 加载、专家团、连接器(飞书/微信)、API与自动化 | 跑通运行环境，掌握单点工具基础 |
+| **第二篇 · 实战案例** | 办公三件套 (Word/Excel/PPT)、文件整理、远程控制、资讯提炼、知识库协同、会议分析、投资调研、视频生产 | 攻坚 10+ 类日常高频核心工作场景 |
+| **第三篇 · 进阶系统** | 蒸馏封装专属 Skill、多 Agent 系统架构设计、自动化工作流高可靠性与容错 | 将个人成功经验升级为团队系统资产 |
+| **第四篇 · 岗位落地** | 研发、财务、市场运营、HR 及管理岗位的定制化工作流与行业落地路线图 | 部门对号入座，实现全员 AI 化落地 |
+| **附录 · 生产力工具** | 常用 Prompt 指令模板库、高频场景速查表 | 随查随用的桌面级生产力手册 |
 
-| 部分 | 内容 |
-| --- | --- |
-| 第一篇 · 使用手册 | 下载、安装、界面、第一个任务、Skill、连接器、API 和自动化 |
-| 第二篇 · 案例篇 | 办公、文件、远程、资讯、知识、会议、投资、视频、自媒体和 GEO |
-| 第三篇 · 进阶篇 | 打造 Skill、多 Agent 系统设计、自动化可靠性 |
-| 第四篇 · 岗位与行业 | 不同岗位的使用路线和行业工作流 |
-| 附录 | 常用指令模板与场景速查表 |
+---
 
-## 推荐阅读方式
+## 推荐学习路径
 
-- **第一次使用**：从[第 1 章](./docs/bluebook/第一篇%20使用手册：先把%20WorkBuddy%20用起来/第%201%20章%20初识%20WorkBuddy/index.md)开始，按顺序完成第一篇。
-- **已经有具体任务**：直接进入第二篇对应案例，跑通后再阅读第三篇。
-- **准备团队落地**：重点阅读第三、四篇，并记录权限边界、验收标准和失败回退。
+- **新员工 / 初学者**：从 [第一篇·使用手册](./docs/bluebook/第一篇%20使用手册：先把%20WorkBuddy%20用起来/第%201%20章%20初识%20WorkBuddy/index.md) 开始，逐步完成环境搭建与首个任务。
+- **业务攻坚 / 即学即用**：直接进入 [第二篇·实战案例](./docs/bluebook/第二篇%20案例篇：从一项任务到一支%20AI%20团队/index.md)，带着手头的真实问题跑通交付物。
+- **部门负责人 / 架构搭建**：精读 [第三篇](./docs/bluebook/第三篇%20进阶篇：把案例变成自己的工作系统/index.md) 与 [第四篇](./docs/bluebook/第四篇%20岗位与行业落地/index.md)，设计本部门的数字员工网络与安全规范。
 
-更完整的路线见[如何阅读这本蓝皮书](./docs/reading-guide.md)。
+完整规划详见 [学习与阅读路线指南](./docs/reading-guide.md)。
 
-## 帮你解决
-
-如果你有真实的工作场景，却不知道怎样用 WorkBuddy 完成，可以前往 **[帮你解决](https://workbuddy.homes/help/)** 提交场景问卷。
-
-请在问卷中说明你遇到的问题、目前的处理方式、会用到的资料、期望结果和安全边界。我们会阅读并评估每一份需求；如果需要补充信息，会通过你主动留下的联系方式与你沟通。
-
-具有代表性和复用价值的问题，我们会尝试制作成完整的开源 Case，写清所用 Skill、安装与使用方法、任务描述、操作过程和最终效果，并发布到[社区案例集](https://workbuddy.homes/cases/)，帮助更多遇到类似问题的人。
+---
 
 ## 本地阅读与开发
 
-需要 Node.js 20～24，推荐 Node.js 22。
+本项目基于 VitePress 搭建，环境要求 Node.js >= 20 < 25（推荐 Node.js 22）。
 
 ```bash
+# 安装依赖
 npm install
+
+# 本地启动开发服务器
 npm run dev
+
+# 启动本地单元测试
+npm run test
+
+# 生产环境静态打包构建
+npm run build
+
+# 本地预览构建产物
+npm run preview
 ```
 
-本地构建：
+---
+
+## 服务器部署说明
+
+运行 `npm run build` 后，系统将在 `docs/.vitepress/dist` 目录下生成完整的纯静态 Web 产物，可直接部署于任何静态 Web 服务器或容器中。
+
+### 1. Nginx 部署参考
+
+由于开启了 VitePress `cleanUrls: true`，请在 Nginx 中配置 `try_files`：
+
+```nginx
+server {
+    listen 80;
+    server_name your-domain.com;
+
+    root /var/www/cuibo-workbuddy/dist;
+    index index.html;
+
+    location / {
+        try_files $uri $uri.html $uri/ /index.html;
+    }
+
+    location /assets/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+}
+```
+
+### 2. Docker 容器化部署
+
+在项目根目录下构建并运行纯静态 Nginx 镜像：
 
 ```bash
-npm run docs:build
-npm run docs:preview
+docker build -t cuibo-workbuddy .
+docker run -d -p 8080:80 --name cuibo-workbuddy cuibo-workbuddy
 ```
 
-## 参与共创
-
-我们优先收集真实、可复现的 WorkBuddy 使用案例。提交 Case 前，请先搜索[社区案例集](https://workbuddy.homes/cases/)和[蓝皮书目录](https://workbuddy.homes/bluebook/)，确认场景或任务没有重复。若目标相同但使用了不同的 Skill、方法或交付形式，请在 PR 中说明差异。
-
-每个案例至少需要写清：
-
-- **场景与问题**：谁在什么任务中遇到了什么困难。
-- **使用的 Skill**：Skill 的作用、来源、安装方式和必要配置。
-- **任务描述**：在 WorkBuddy 中输入的提示词、步骤或自动化设置。
-- **执行过程**：关键操作、权限要求、输入资料和安全边界。
-- **实际效果**：使用截图或其他结果证明展示最终输出。
-- **验收标准**：怎样判断任务已经正确完成。
-
-投稿时，在 `docs/cases/submissions/` 下为案例新建独立目录，使用 [Case 正文模板](./.github/CASE_TEMPLATE.md)编写内容，并通过 [Case PR 模板](./.github/PULL_REQUEST_TEMPLATE/case.md)提交。审核合并后，案例会自动出现在网站左侧目录；具有代表性的经典案例经过进一步复现和编辑后，可能进入蓝皮书正式章节。
-
-完整流程请阅读 [Case 投稿指南](https://workbuddy.homes/community/case-contributing)和[贡献指南](./CONTRIBUTING.md)。准备或提交 PR 后，也可以按网站提示加入 WorkBuddy 共创群，交流选题并获得内容完善建议。
+---
 
 ## 目录结构
 
 ```text
 WorkBuddyGuide
-├─ .github/
-│  ├─ CASE_TEMPLATE.md             # Case 正文模板
-│  └─ PULL_REQUEST_TEMPLATE/       # Pull Request 模板
+├─ assets/                         # 公司 Logo 及核心素材
 ├─ docs/
-│  ├─ .vitepress/                  # 网站配置、主题、导航与 SEO
-│  ├─ bluebook/                    # 蓝皮书正式章节
-│  ├─ cases/
-│  │  └─ submissions/              # 社区提交的独立 Case
-│  ├─ community/                   # Case 投稿与社区共创指南
-│  ├─ help/                        # “帮你解决”场景问卷页面
-│  ├─ public/                      # 网站图片、二维码等静态资源
-│  ├─ index.md                     # 网站首页
-│  └─ reading-guide.md             # 阅读指南
-├─ scripts/                        # 内容同步与辅助工具
-├─ CONTRIBUTING.md                 # 完整贡献规范
-├─ README.md                       # 中文项目说明
-└─ README_en.md                    # English README
+│  ├─ .vitepress/                  # VitePress 站点配置与主题
+│  ├─ bluebook/                    # 28 章蓝皮书核心教材正文
+│  │  ├─ 第一篇 使用手册：先把 WorkBuddy 用起来/
+│  │  ├─ 第二篇 案例篇：从一项任务到一支 AI 团队/
+│  │  ├─ 第三篇 进阶篇：把案例变成自己的工作系统/
+│  │  ├─ 第四篇 岗位与行业落地/
+│  │  └─ 附录/
+│  ├─ public/                      # 站点静态资源 (Logo、图标等)
+│  ├─ about.md                     # 关于重庆璀泊科技有限公司
+│  ├─ index.md                     # 门户首页
+│  └─ reading-guide.md             # 学习与阅读指南
+├─ scripts/                        # 辅助同步脚本
+├─ package.json                    # 工程依赖与构建脚本
+└─ README.md                       # 项目说明
 ```
 
-## 部署
+---
 
-本站使用 **VitePress + Cloudflare Pages + GitHub**。Cloudflare Pages 连接本仓库的 `main` 分支后，每次推送都会自动构建部署。配置见 [DEPLOYMENT.md](./DEPLOYMENT.md)。
+## 知识产权与版权声明
 
-## 作者们
-
-感谢以下作者共同参与《WorkBuddy 蓝皮书》的创作与维护。点击名片可查看原图并扫描二维码。
-
-<p align="center">
-  <a href="./assets/authors/jia-mu-wei-lai-pai.png"><img src="./assets/authors/jia-mu-wei-lai-pai.png" alt="甲木未来派" width="48%"></a>
-  <a href="./assets/authors/mo-yu-xiao-li.png"><img src="./assets/authors/mo-yu-xiao-li.png" alt="摸鱼小李" width="48%"></a>
-</p>
-
-<p align="center">
-  <a href="./assets/authors/dai-shu-di-ai-ke-zhan.png"><img src="./assets/authors/dai-shu-di-ai-ke-zhan.png" alt="袋鼠帝AI客栈" width="48%"></a>
-  <a href="./assets/authors/cang-he.png"><img src="./assets/authors/cang-he.png" alt="苍何" width="48%"></a>
-</p>
-
-<p align="center">
-  <a href="./assets/authors/liu-cong-nlp.png"><img src="./assets/authors/liu-cong-nlp.png" alt="刘聪NLP" width="48%"></a>
-</p>
-
-## 声明
-
-本项目是社区维护的 WorkBuddy 实战知识库。涉及产品功能、界面、价格、可用范围和安全策略等时效性信息时，请以 WorkBuddy 官方渠道为准。
-
-
-## 开源协议
-
-本项目采用 [MIT License](./LICENSE) 开源。你可以自由使用、复制、修改和分发本项目，但需要保留原始版权声明和许可证文本。
+© 2026 重庆璀泊科技有限公司 All Rights Reserved.  
+本知识库内容由重庆璀泊科技有限公司整理维护，用于内部赋能与合作交流。

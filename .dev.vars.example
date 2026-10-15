@@ -1,3 +1,0 @@
-# Local preview only. Copy to .dev.vars.local; never place real tokens here.
-TRAFFIC_HISTORY_START=2026-07-10
-CF_ANALYTICS_MOCK={"data":{"viewer":{"accounts":[{"todayVisits":[{"count":10160,"sum":{"visits":2930},"avg":{"sampleInterval":1}}],"last24hVisits":[{"count":10940,"sum":{"visits":3120},"avg":{"sampleInterval":1}}]}]}}}

@@ -1,9 +1,9 @@
 {
-  "name": "workbuddy-guide",
+  "name": "cuibo-workbuddy-guide",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "WorkBuddy 实战蓝皮书：从安装使用到 AI 工作系统",
+  "description": "重庆璀泊科技有限公司 - WorkBuddy 企业实战蓝皮书",
   "engines": {
     "node": ">=20 <25"
   },
@@ -15,21 +15,16 @@
     "docs:build": "vitepress build docs",
     "preview": "vitepress preview docs --host 127.0.0.1",
     "docs:preview": "vitepress preview docs --host 127.0.0.1",
-    "traffic:db:migrate:local": "wrangler d1 migrations apply TRAFFIC_DB --local",
-    "traffic:db:seed:local": "wrangler d1 execute TRAFFIC_DB --local --file scripts/local-traffic-seed.sql",
-    "traffic:setup:local": "npm run traffic:db:migrate:local && npm run traffic:db:seed:local",
-    "traffic:collector:dev": "wrangler dev --config wrangler.collector.jsonc --test-scheduled",
-    "pages:dev": "wrangler pages dev docs/.vitepress/dist --port 8788",
-    "pages:deploy": "wrangler pages deploy docs/.vitepress/dist --project-name workbuddy-guide"
+    "serve": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs",
+    "bundle": "npm run build && zip -q -r dist.zip dist && echo '>>> 已打包生成 dist.zip 压缩包，可直接上传服务器解压'"
   },
   "devDependencies": {
-    "@fontsource/silkscreen": "^5.2.8",
     "@vitejs/plugin-vue": "^6.0.7",
     "@vue/test-utils": "^2.4.11",
     "happy-dom": "^20.10.6",
     "mermaid": "11.16.0",
     "vitepress": "1.6.4",
-    "vitest": "^4.1.10",
-    "wrangler": "^4.120.0"
+    "vitest": "^4.1.10"
   }
 }

@@ -1,88 +1,83 @@
-# Cloudflare Pages 部署
+# 极简部署指南 · 重庆璀泊科技 WorkBuddy 蓝皮书
 
-本站采用 VitePress 静态构建，并通过 Cloudflare Pages 的 GitHub 集成持续部署。
+本项目为**100% 纯静态现代化知识库（基于 VitePress）**：
+- **完全不依赖任何数据库**（如 MySQL、Redis、SQLite、MongoDB 等全部不需要）；
+- **完全不依赖外部接口**；
+- **编译后即为一套标准的静态文件（HTML + CSS + JS + 图片）**，放上去就能直接跑。
 
-## Cloudflare Pages 设置
+---
 
-在 Cloudflare 控制台选择 **Workers & Pages → Create application → Pages → Import an existing Git repository**，授权并选择 `AlephAITech/WorkBuddyGuide`。
+## 方式一：一键打包为 zip，传到服务器解压即可（最省心、零门槛）
 
-使用以下配置：
+### 1. 本地执行一键打包
+```bash
+npm run bundle
+```
+执行后会在根目录生成一个 **`dist.zip`** 压缩包。
 
-| 配置项 | 值 |
-| --- | --- |
-| Project name | `workbuddy-guide` |
-| Production branch | `main` |
-| Framework preset | `VitePress`（也可选择 None） |
-| Build command | `npm run docs:build` |
-| Build output directory | `docs/.vitepress/dist` |
-| Root directory | `/` |
-| Node.js version | `22` |
+### 2. 上传到服务器并解压
+无论你的服务器使用的是 **宝塔面板**、**1Panel**、**Nginx**、**Apache** 还是 **Caddy**：
+1. 新建一个静态网站。
+2. 将 `dist.zip` 上传到网站根目录并解压（把 `dist` 文件夹内的所有内容放在网站根目录下）。
+3. 如果使用 Nginx，在网站配置中加入这一行（支持无后缀路由）：
+   ```nginx
+   location / {
+       try_files $uri $uri.html $uri/ /index.html;
+   }
+   ```
+4. 立即生效，打开浏览器直接访问！
 
-在 Cloudflare Pages 的生产环境变量中设置：
+---
 
-```text
-VITEPRESS_SITE_URL=https://workbuddy.homes
+## 方式二：使用项目内置的高性能 HTTP 静态服务（无需安装 Nginx）
+
+项目中已经内置了一个**纯原生、零外部依赖的生产级 Node.js 静态服务脚本**（位于 `scripts/serve.mjs`），支持自动 Gzip 压缩与路由解析。
+
+如果你的服务器上有 Node.js 环境：
+```bash
+# 1. 编译
+npm run build
+
+# 2. 直接启动（默认 8080 端口）
+npm run serve
+
+# 也可以自定义端口启动，例如 80 端口：
+node scripts/serve.mjs 80
 ```
 
-访问量接口还需要以下服务端变量或 Secret。它们只存在于 Cloudflare，不能使用
-`VITE_` 前缀，也不能提交到 GitHub：
+如果需要后台长期运行，推荐使用 **PM2**：
+```bash
+# 安装 pm2（若未安装）
+npm install -g pm2
 
-```text
-CF_ANALYTICS_TOKEN
-CF_ACCOUNT_ID
-CF_WEB_ANALYTICS_SITE_TAG
+# 后台启动服务
+pm2 start scripts/serve.mjs --name "cuibo-workbuddy" -- 8080
+
+# 开机自启
+pm2 save
+pm2 startup
 ```
 
-仓库默认值同样使用正式域名，避免缺少环境变量时 canonical、Open Graph
-和 sitemap 回退到 `pages.dev` 域名。
+---
 
-仓库中的 `.nvmrc` 会声明 Node.js 22。依赖通过 `package-lock.json` 固定，Cloudflare 构建时应使用 `npm ci` 安装。
+## 方式三：Docker 容器化部署（一行命令跑起来）
 
-## 访问量历史数据库
-
-Cloudflare Web Analytics 只作为实时数据源。完整日数据由定时 Worker 写入 D1，
-Pages Function `/api/traffic` 返回“D1 历史累计 + 今日实时数据”。
-
-首次配置远程环境时：
-
-1. 创建名为 `workbuddy-traffic` 的 D1 数据库。
-2. 将 Cloudflare 返回的数据库 ID 替换到 `wrangler.jsonc` 和
-   `wrangler.collector.jsonc`，不要继续使用本地占位 ID。
-3. 执行 `wrangler d1 migrations apply TRAFFIC_DB --remote`。
-4. 为 Pages 配置上面的三个 Cloudflare Analytics Secret。
-5. 为 Pages 和 `workbuddy-traffic-collector` Worker 配置相同的
-   `TRAFFIC_SYNC_TOKEN` Secret；定时 Worker 只通过带鉴权的内部接口触发 Pages
-   归档，不持有 Analytics Token。
-6. 部署定时 Worker。其 Cron 为 `15 18 * * *`，即北京时间每日 02:15。
-
-`TRAFFIC_HISTORY_START=2026-07-10` 是公开的数据起始日期，不是 Secret。
-`TRAFFIC_SYNC_TOKEN` 用于保护 Pages 内部同步接口和收集器的手动 `/sync`
-接口，应分别使用 Pages Secret 与 Worker Secret 保存。
-
-## 本地使用同一套构建与 D1
+根目录已提供优化过的 [Dockerfile](file:///Users/lirui/Desktop/code/WorkBuddyGuide/Dockerfile)，不需要安装任何环境：
 
 ```bash
-npm ci
-npm run docs:build
-npm run traffic:setup:local
-npm run pages:dev
+# 1. 构建镜像
+docker build -t cuibo-workbuddy .
+
+# 2. 启动容器（映射到 8080 端口，可按需修改）
+docker run -d -p 8080:80 --name cuibo-workbuddy --restart always cuibo-workbuddy
 ```
 
-打开 `http://127.0.0.1:8788/`。本地使用被 Git 忽略的 `.dev.vars` 模拟今日实时
-数据，并使用 `scripts/local-traffic-seed.sql` 初始化本地 D1；其中不包含任何
-Cloudflare Token。
+访问 `http://<服务器IP>:8080` 即可直接使用。
 
-## 自动部署行为
+---
 
-- 推送到 `main`：发布生产版本。
-- Pull Request 或其他分支：由 Cloudflare Pages 生成预览部署。
-- 静态页面由 Pages 提供，`/api/traffic` 由 Pages Function 提供，并绑定 D1。
-- 定时归档由独立 Worker 执行，页面浏览器不会接触 Cloudflare Secret。
+## 架构特性与安全说明
 
-## 自定义域名
-
-正式自定义域名为 `https://workbuddy.homes`。如未来更换域名，需要同步更新
-`VITEPRESS_SITE_URL`、`docs/public/robots.txt`、README 在线阅读链接和各搜索引擎站点属性。
-
-`docs/public/_headers` 会为带内容指纹的 `/assets/*` 设置一年不可变缓存，
-并为社区图片、分享图和 favicon 设置一个月浏览器缓存。
+1. **绝对离线可用**：所有字体、像素图标、Mermaid 渲染引擎、图片灯箱均打包在产物内部，完全不依赖公网第三方 CDN。
+2. **极高承载能力**：纯静态资源由 Web 服务器直接发送（或经由 Gzip 传输），1 核 1G 内存的入门级服务器也能轻松支撑企业全员及外部客户的高并发访问。
+3. **数据隐私合规**：不采集任何用户设备信息，不打点任何外部平台，完全符合企业内网数据安全规范。

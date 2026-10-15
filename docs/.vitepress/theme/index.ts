@@ -1,6 +1,5 @@
 import { defineAsyncComponent, h } from "vue";
 import DefaultTheme from "vitepress/theme-without-fonts";
-import GroupQrMenu from "./components/GroupQrMenu.vue";
 import HomePage from "./components/HomePage.vue";
 import ImageLightbox from "./components/ImageLightbox.vue";
 
@@ -45,7 +44,6 @@ export default {
       "layout-bottom": () => h(ImageLightbox),
     }),
   enhanceApp({ app, router }) {
-    app.component("GroupQrMenu", GroupQrMenu);
     app.component("HomePage", HomePage);
     app.component(
       "MermaidDiagram",

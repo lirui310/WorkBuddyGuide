@@ -486,8 +486,9 @@ onUnmounted(() => {
   padding: 48px 3vw;
   place-items: center;
   overflow: hidden;
-  background: rgb(9 11 8 / 94%);
-  backdrop-filter: blur(10px);
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   cursor: zoom-out;
 }
 
@@ -509,11 +510,11 @@ onUnmounted(() => {
   height: auto;
   max-height: calc(100vh - 104px);
   max-height: calc(100dvh - 104px);
-  border: 2px solid var(--wb-acid);
-  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
   object-fit: contain;
-  background: #fff;
-  box-shadow: 8px 8px 0 rgb(216 242 56 / 22%);
+  background: #ffffff;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   transform-origin: center;
   transition: transform 80ms ease-out;
   user-select: none;
@@ -535,46 +536,45 @@ onUnmounted(() => {
 .wb-image-lightbox__close {
   position: fixed;
   z-index: 1;
-  top: max(18px, env(safe-area-inset-top));
-  right: max(18px, env(safe-area-inset-right));
+  top: max(20px, env(safe-area-inset-top));
+  right: max(20px, env(safe-area-inset-right));
   display: grid;
-  width: 52px;
-  height: 52px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   place-items: center;
-  border: 2px solid var(--wb-acid);
-  border-radius: 2px;
-  color: #11130e;
-  background: var(--wb-acid);
-  box-shadow: 4px 4px 0 #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
   cursor: pointer;
-  transition: transform 140ms ease, box-shadow 140ms ease;
+  transition: all 180ms ease;
 }
 
 .wb-image-lightbox__close span {
-  font-size: 38px;
-  font-weight: 400;
+  font-size: 26px;
+  font-weight: 300;
   line-height: 1;
-  transform: translateY(-2px);
 }
 
 .wb-image-lightbox__close:hover,
 .wb-image-lightbox__close:focus-visible {
   outline: 0;
-  box-shadow: 6px 6px 0 #fff;
-  transform: translate(-2px, -2px);
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.08);
 }
 
 .wb-image-lightbox__hint {
   position: fixed;
   right: 0;
-  bottom: max(14px, env(safe-area-inset-bottom));
+  bottom: max(16px, env(safe-area-inset-bottom));
   left: 0;
   margin: 0;
-  color: rgb(255 255 255 / 76%);
-  font-size: 12px;
-  font-weight: 650;
-  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   text-align: center;
   pointer-events: none;
 }
@@ -582,35 +582,38 @@ onUnmounted(() => {
 .wb-image-lightbox__scale,
 .wb-image-lightbox__key {
   display: inline-block;
-  padding: 2px 6px;
-  border: 1px solid rgb(216 242 56 / 62%);
-  font-family: var(--wb-pixel);
-  font-size: 9px;
-  font-weight: 400;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
 }
 
 .wb-image-lightbox__scale {
-  min-width: 46px;
+  min-width: 44px;
   margin-right: 8px;
-  border-color: var(--wb-acid);
-  color: #11130e;
-  background: var(--wb-acid);
+  border-radius: 9999px;
+  color: #ffffff;
+  background: rgba(2, 132, 199, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.4);
 }
 
 .wb-image-lightbox__key {
   margin-right: 4px;
   margin-left: 10px;
-  color: var(--wb-acid);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: var(--cb-font-mono);
 }
 
 .wb-lightbox-enter-active,
 .wb-lightbox-leave-active {
-  transition: opacity 180ms ease;
+  transition: opacity 200ms ease;
 }
 
 .wb-lightbox-enter-active .wb-image-lightbox__stage,
 .wb-lightbox-leave-active .wb-image-lightbox__stage {
-  transition: transform 180ms ease, opacity 180ms ease;
+  transition: transform 200ms ease, opacity 200ms ease;
 }
 
 .wb-lightbox-enter-from,
@@ -621,7 +624,7 @@ onUnmounted(() => {
 .wb-lightbox-enter-from .wb-image-lightbox__stage,
 .wb-lightbox-leave-to .wb-image-lightbox__stage {
   opacity: 0;
-  transform: scale(0.975);
+  transform: scale(0.96);
 }
 
 @media (max-width: 640px) {
@@ -642,15 +645,14 @@ onUnmounted(() => {
   }
 
   .wb-image-lightbox__close {
-    top: max(10px, env(safe-area-inset-top));
-    right: max(10px, env(safe-area-inset-right));
-    width: 44px;
-    height: 44px;
-    box-shadow: 3px 3px 0 #fff;
+    top: max(12px, env(safe-area-inset-top));
+    right: max(12px, env(safe-area-inset-right));
+    width: 38px;
+    height: 38px;
   }
 
   .wb-image-lightbox__close span {
-    font-size: 32px;
+    font-size: 22px;
   }
 }
 

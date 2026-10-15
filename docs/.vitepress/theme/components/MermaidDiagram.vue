@@ -29,11 +29,11 @@ const renderDiagram = async () => {
       themeVariables: dark
         ? undefined
         : {
-            primaryColor: "#eef6d1",
-            primaryTextColor: "#12140f",
-            primaryBorderColor: "#355e18",
-            lineColor: "#62675e",
-            secondaryColor: "#f5f7f0",
+            primaryColor: "#e0f2fe",
+            primaryTextColor: "#0f172a",
+            primaryBorderColor: "#0284c7",
+            lineColor: "#64748b",
+            secondaryColor: "#f0fdf4",
             tertiaryColor: "#ffffff",
           },
     });
@@ -68,21 +68,7 @@ const startRendering = () => {
 };
 
 onMounted(() => {
-  if (!("IntersectionObserver" in window)) {
-    startRendering();
-    return;
-  }
-
-  intersectionObserver = new IntersectionObserver(
-    (entries) => {
-      if (!entries.some((entry) => entry.isIntersecting)) return;
-      intersectionObserver?.disconnect();
-      startRendering();
-    },
-    { rootMargin: "400px 0px" },
-  );
-
-  if (container.value) intersectionObserver.observe(container.value);
+  startRendering();
 });
 
 onUnmounted(() => {
